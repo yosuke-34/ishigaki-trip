@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石垣島旅のしおり 🌿 2026.5.4-5.6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Klee+One:wght@400;600&family=Yusei+Magic&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f0e1;
+    --paper-deep:#ede1c8;
+    --rose:#e6a9a9;
+    --rose-soft:#f3cdcd;
+    --sky:#a9c8d4;
+    --sky-soft:#cde0e7;
+    --mint:#b2d3b0;
+    --mint-soft:#d6e7d4;
+    --butter:#e8c976;
+    --butter-soft:#f4e4b2;
+    --lavender:#c2b3d3;
+    --lavender-soft:#dfd4e9;
+    --terra:#d49880;
+    --ink:#5a4a3e;
+    --ink-soft:#8a7a6a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Klee One', 'Hiragino Maru Gothic Pro', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height:1.85;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* 紙のテクスチャ */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.29 0 0 0 0 0.24 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:0.5;
+    mix-blend-mode:multiply;
+    pointer-events:none;
+    z-index:1;
+  }
+
+  /* 水彩のにじみ背景 */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 600px 400px at 5% 10%, rgba(169,200,212,.35), transparent 60%),
+      radial-gradient(ellipse 500px 500px at 95% 30%, rgba(230,169,169,.30), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 10% 70%, rgba(178,211,176,.25), transparent 65%),
+      radial-gradient(ellipse 500px 600px at 100% 90%, rgba(232,201,118,.30), transparent 60%);
+    pointer-events:none;
+    z-index:0;
+    filter:blur(20px);
+  }
+
+  .container{
+    max-width:780px;
+    margin:0 auto;
+    padding:0 22px;
+    position:relative;
+    z-index:2;
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    text-align:center;
+    padding:70px 20px 50px;
+    position:relative;
+  }
+  .hero-tag{
+    display:inline-block;
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    color:var(--ink-soft);
+    font-size:24px;
+    letter-spacing:3px;
+    margin-bottom:18px;
+  }
+  .hero-tag::before, .hero-tag::after{
+    content:"~";
+    margin:0 10px;
+    color:var(--rose);
+  }
+  .hero h1{
+    font-family:'Yusei Magic', cursive;
+    font-size:clamp(44px, 10vw, 76px);
+    line-height:1.05;
+    color:var(--ink);
+    letter-spacing:-1px;
+    margin-bottom:20px;
+    position:relative;
+  }
+  .hero h1 .accent{
+    background: linear-gradient(transparent 60%, var(--butter-soft) 60%, var(--butter-soft) 92%, transparent 92%);
+    padding:0 8px;
+  }
+  .hero-sub{
+    font-family:'Klee One', sans-serif;
+    font-weight:600;
+    font-size:17px;
+    color:var(--ink);
+    margin-bottom:6px;
+    letter-spacing:1px;
+  }
+  .hero-date{
+    font-family:'Caveat', cursive;
+    font-size:28px;
+    color:var(--terra);
+    font-weight:700;
+    letter-spacing:2px;
+  }
+
+  /* ふわふわ漂う水彩しみ */
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(8px);
+    opacity:0.55;
+    pointer-events:none;
+    animation: drift 8s ease-in-out infinite;
+  }
+  .blob.b1{width:90px;height:90px;background:var(--rose-soft);top:30px;left:6%;animation-delay:0s}
+  .blob.b2{width:110px;height:80px;background:var(--sky-soft);top:90px;right:8%;animation-delay:1.5s}
+  .blob.b3{width:70px;height:90px;background:var(--mint-soft);bottom:40px;left:10%;animation-delay:3s}
+  .blob.b4{width:100px;height:70px;background:var(--butter-soft);bottom:60px;right:6%;animation-delay:4.5s}
+
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(8px,-12px) scale(1.08)}
+  }
+
+  /* ===== セクション共通 ===== */
+  section{
+    margin-bottom:55px;
+    position:relative;
+  }
+  .section-title{
+    font-family:'Yusei Magic', cursive;
+    font-size:26px;
+    color:var(--ink);
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    position:relative;
+  }
+  .section-title::after{
+    content:"";
+    flex:1;
+    height:2px;
+    background:repeating-linear-gradient(90deg, var(--ink-soft) 0 6px, transparent 6px 12px);
+    margin-left:8px;
+    opacity:0.5;
+  }
+  .section-title .emoji{font-size:28px}
+
+  /* カード共通：水彩風 */
+  .card{
+    background:rgba(255,253,247,0.85);
+    border-radius:24px;
+    padding:24px;
+    box-shadow:
+      0 2px 0 rgba(90,74,62,0.08),
+      0 18px 40px -20px rgba(90,74,62,0.25);
+    position:relative;
+    backdrop-filter:blur(2px);
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:24px;
+    border:1.5px dashed var(--ink-soft);
+    opacity:0.35;
+    pointer-events:none;
+  }
+
+  /* ===== 概要 ===== */
+  .summary-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .summary-item{
+    background:rgba(255,255,255,0.6);
+    border-radius:16px;
+    padding:13px 15px;
+    border:1px solid rgba(90,74,62,0.15);
+  }
+  .summary-item .label{
+    font-family:'Caveat', cursive;
+    font-size:16px;
+    font-weight:700;
+    color:var(--terra);
+    letter-spacing:1.5px;
+    margin-bottom:2px;
+  }
+  .summary-item .value{
+    font-weight:600;
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  /* ===== Day ヘッダー ===== */
+  .day-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:22px;
+    padding:18px 22px;
+    border-radius:20px;
+    background:rgba(255,253,247,0.7);
+    position:relative;
+    overflow:hidden;
+  }
+  .day-header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse 200px 100px at 80% 100%, var(--watercolor), transparent 70%);
+    opacity:0.6;
+    pointer-events:none;
+  }
+  .day1 .day-header{--watercolor:var(--sky-soft)}
+  .day2 .day-header{--watercolor:var(--rose-soft)}
+  .day3 .day-header{--watercolor:var(--butter-soft)}
+
+  .day-num{
+    font-family:'Caveat', cursive;
+    font-size:72px;
+    line-height:0.9;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .day1 .day-num{color:var(--sky)}
+  .day2 .day-num{color:var(--rose)}
+  .day3 .day-num{color:var(--butter)}
+
+  .day-info .day-date{
+    font-family:'Yusei Magic', cursive;
+    font-weight:400;
+    font-size:20px;
+    color:var(--ink);
+  }
+  .day-info .day-theme{
+    font-family:'Caveat', cursive;
+    font-size:20px;
+    color:var(--ink-soft);
+    font-weight:700;
+    letter-spacing:1px;
+  }
+
+  /* ===== タイムライン ===== */
+  .timeline{
+    position:relative;
+    padding-left:32px;
+    margin-bottom:18px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:9px; top:14px; bottom:14px;
+    width:0;
+    border-left:3px dotted var(--ink-soft);
+    opacity:0.5;
+  }
+  .item{
+    position:relative;
+    margin-bottom:14px;
+  }
+  .item::before{
+    content:"";
+    position:absolute;
+    left:-29px; top:18px;
+    width:18px; height:18px;
+    background:var(--paper);
+    border:3px solid var(--ink-soft);
+    border-radius:50%;
+    box-shadow:0 0 0 4px var(--paper);
+  }
+  .day1 .item::before{border-color:var(--sky)}
+  .day2 .item::before{border-color:var(--rose)}
+  .day3 .item::before{border-color:var(--butter)}
+
+  .item-card{
+    background:rgba(255,253,247,0.85);
+    border-radius:16px;
+    padding:14px 18px;
+    box-shadow:0 8px 20px -12px rgba(90,74,62,0.25);
+    border:1px solid rgba(90,74,62,0.12);
+  }
+  .item-time{
+    font-family:'Caveat', cursive;
+    font-size:22px;
+    font-weight:700;
+    color:var(--terra);
+    margin-bottom:2px;
+    line-height:1.2;
+  }
+  .item-title{
+    font-family:'Klee One', sans-serif;
+    font-weight:600;
+    font-size:16px;
+    margin-bottom:4px;
+    color:var(--ink);
+  }
+  .item-detail{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  .item-detail .tag{
+    display:inline-block;
+    background:var(--paper-deep);
+    color:var(--ink);
+    font-size:11px;
+    padding:2px 9px;
+    border-radius:20px;
+    margin-right:6px;
+    font-weight:600;
+    border:1px dashed var(--ink-soft);
+  }
+
+  /* ===== レコメンドカード（水彩） ===== */
+  .recommend{
+    margin:22px 0;
+    padding:26px;
+    border-radius:26px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 300px 200px at 10% 0%, var(--w-color-1), transparent 60%),
+      radial-gradient(ellipse 400px 300px at 100% 100%, var(--w-color-2), transparent 70%),
+      rgba(255,253,247,0.85);
+  }
+  .recommend::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border-radius:20px;
+    border:1.5px dashed var(--ink-soft);
+    opacity:0.3;
+    pointer-events:none;
+  }
+  .recommend{--w-color-1:var(--rose-soft); --w-color-2:var(--butter-soft)}
+  .recommend-aqua{--w-color-1:var(--sky-soft); --w-color-2:var(--mint-soft)}
+  .recommend-sunset{--w-color-1:var(--butter-soft); --w-color-2:var(--rose-soft)}
+  .recommend-night{--w-color-1:var(--lavender-soft); --w-color-2:var(--sky-soft)}
+
+  .reco-badge{
+    display:inline-block;
+    font-family:'Caveat', cursive;
+    font-size:20px;
+    font-weight:700;
+    color:var(--terra);
+    letter-spacing:1.5px;
+    margin-bottom:6px;
+    position:relative;
+    z-index:1;
+  }
+  .reco-badge::before{
+    content:"✦  ";
+    color:var(--butter);
+  }
+  .reco-badge::after{
+    content:"  ✦";
+    color:var(--butter);
+  }
+  .reco-title{
+    font-family:'Yusei Magic', cursive;
+    font-size:24px;
+    color:var(--ink);
+    line-height:1.25;
+    margin-bottom:18px;
+    position:relative;
+    z-index:1;
+  }
+  .reco-list{
+    list-style:none;
+    position:relative;
+    z-index:1;
+  }
+  .reco-list li{
+    background:rgba(255,255,255,0.7);
+    border-radius:14px;
+    padding:13px 16px;
+    margin-bottom:10px;
+    border:1px solid rgba(90,74,62,0.15);
+    box-shadow:0 4px 12px -8px rgba(90,74,62,0.2);
+  }
+  .reco-list li:last-child{margin-bottom:0}
+  .reco-list .place{
+    font-family:'Klee One', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink);
+    margin-bottom:4px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .reco-list .desc{
+    color:var(--ink-soft);
+    font-size:13.5px;
+    line-height:1.7;
+  }
+  .reco-tip{
+    margin-top:16px;
+    background:rgba(255,253,247,0.9);
+    border-radius:14px;
+    padding:12px 16px;
+    font-size:13.5px;
+    position:relative;
+    z-index:1;
+    border-left:4px solid var(--terra);
+    color:var(--ink);
+  }
+  .reco-tip strong{
+    color:var(--terra);
+    font-family:'Caveat', cursive;
+    font-size:18px;
+    margin-right:4px;
+  }
+
+  /* ===== 持ち物 ===== */
+  .pack-cat{ margin-bottom:22px }
+  .pack-cat:last-child{ margin-bottom:0 }
+  .pack-cat-title{
+    font-family:'Yusei Magic', cursive;
+    font-size:18px;
+    color:var(--ink);
+    margin-bottom:12px;
+    padding-bottom:6px;
+    border-bottom:2px dotted var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    opacity:0.95;
+  }
+  .pack-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+    gap:7px;
+  }
+  .pack-list li{
+    font-size:13.5px;
+    padding:7px 12px;
+    background:rgba(255,255,255,0.6);
+    border:1px solid rgba(90,74,62,0.15);
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:var(--ink);
+  }
+  .pack-list li::before{
+    content:"✦";
+    color:var(--terra);
+  }
+  .pack-list li.essential{
+    background:var(--butter-soft);
+    border-color:var(--butter);
+  }
+  .pack-list li.essential::before{
+    content:"★";
+    color:var(--terra);
+  }
+
+  /* ===== 注意事項 ===== */
+  .notice{
+    background:
+      radial-gradient(ellipse 300px 200px at 100% 0%, var(--rose-soft), transparent 70%),
+      rgba(255,253,247,0.85);
+    border-radius:24px;
+    padding:24px;
+    box-shadow:0 18px 40px -20px rgba(90,74,62,0.25);
+    position:relative;
+  }
+  .notice::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border-radius:18px;
+    border:1.5px dashed var(--rose);
+    opacity:0.4;
+    pointer-events:none;
+  }
+  .notice-item{
+    display:flex;
+    gap:14px;
+    margin-bottom:16px;
+    font-size:13.5px;
+    line-height:1.75;
+    position:relative;
+    z-index:1;
+  }
+  .notice-item:last-child{margin-bottom:0}
+  .notice-icon{
+    font-size:26px;
+    flex-shrink:0;
+    line-height:1;
+  }
+  .notice-item strong{
+    color:var(--terra);
+    font-family:'Klee One', sans-serif;
+    font-weight:600;
+  }
+
+  /* ===== フッター ===== */
+  .footer{
+    text-align:center;
+    padding:50px 20px 70px;
+    position:relative;
+  }
+  .footer-msg{
+    font-family:'Caveat', cursive;
+    font-size:54px;
+    color:var(--terra);
+    line-height:1.1;
+    margin-bottom:8px;
+    font-weight:700;
+  }
+  .footer-msg .em{
+    color:var(--rose);
+    display:inline-block;
+    transform:rotate(-3deg);
+  }
+  .footer-sub{
+    font-family:'Klee One', sans-serif;
+    font-size:14px;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .footer-deco{
+    margin-top:18px;
+    font-size:24px;
+    letter-spacing:8px;
+    opacity:0.6;
+  }
+
+  /* スマホ */
+  @media (max-width:480px){
+    .summary-grid{grid-template-columns:1fr}
+    .day-num{font-size:60px}
+    .reco-title{font-size:21px}
+    .footer-msg{font-size:42px}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <span class="blob b4"></span>
+
+    <div class="hero-tag">YOUSUKE & RIO</div>
+    <h1>石垣島<br><span class="accent">のんびり旅</span></h1>
+    <div class="hero-sub">2泊3日の旅のしおり</div>
+    <div class="hero-date">2026.05.04 — 05.06</div>
+  </header>
+
+  <!-- 旅の概要 -->
+  <section>
+    <h2 class="section-title"><span class="emoji">📒</span>旅の概要</h2>
+    <div class="card">
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="label">Destination</div>
+          <div class="value">沖縄県 石垣島</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Duration</div>
+          <div class="value">2泊3日</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Hotel</div>
+          <div class="value">アートホテル石垣島</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Member</div>
+          <div class="value">ヨウスケ & リオ</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Outbound</div>
+          <div class="value">JAL971 / E6F3C9<br>羽田 7:05 → 石垣 10:15</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Return</div>
+          <div class="value">Peach MM530 / 58DRRR<br>石垣 17:35 → 成田 20:45</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 1 -->
+  <section class="day1">
+    <div class="day-header">
+      <div class="day-num">Day 1</div>
+      <div class="day-info">
+        <div class="day-date">5月4日（月）</div>
+        <div class="day-theme">arrival & explore</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">07:05</div>
+          <div class="item-title">羽田空港 出発 ✈️</div>
+          <div class="item-detail">
+            <span class="tag">JAL971</span>座席 34D / 34E（普通席）
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">10:15</div>
+          <div class="item-title">石垣空港 到着 🛬</div>
+          <div class="item-detail">空港から市街地まで車で約30分。バス・タクシー・レンタカーで移動！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- レコメンド：Plan A -->
+    <div class="recommend">
+      <div class="reco-badge">Plan A · レンタカー</div>
+      <div class="reco-title">到着日は<br>絶景ドライブで掴む🚗</div>
+      <ul class="reco-list">
+        <li>
+          <div class="place">🚗 まずレンタカーをGET</div>
+          <div class="desc">空港で借りればその足で観光ON。市街地まで戻る前に北部を回るのがおすすめ◎</div>
+        </li>
+        <li>
+          <div class="place">🌊 川平湾(かびらわん)</div>
+          <div class="desc">石垣No.1の絶景スポット。グラスボート(30分)で海中サンゴと熱帯魚をのぞき見しちゃおう。展望台からの眺めも◎</div>
+        </li>
+        <li>
+          <div class="place">📸 玉取崎展望台</div>
+          <div class="desc">エメラルドグリーンの海と緑のコントラストが映える。車で立ち寄れるサクッと絶景</div>
+        </li>
+        <li>
+          <div class="place">🥩 夜は石垣牛で乾杯！</div>
+          <div class="desc">「炭火焼肉やまもと」「焼肉きたうち牧場」など人気店は予約推奨。ユーグレナモール周辺は飲み屋も豊富</div>
+        </li>
+      </ul>
+      <div class="reco-tip"><strong>tip</strong>5月の日没は19時頃。川平湾は夕陽前の16〜18時が一番きれい！</div>
+    </div>
+
+    <!-- レコメンド：Plan B -->
+    <div class="recommend recommend-aqua">
+      <div class="reco-badge">Plan B · レンタサイクル</div>
+      <div class="reco-title">のんびり風を切る<br>島ちゃりスタイル🚲</div>
+      <ul class="reco-list">
+        <li>
+          <div class="place">🚌 空港バスで市街地へ</div>
+          <div class="desc">東運輸の路線バスで離島ターミナル方面へ(約40分・片道540円)。ホテルに荷物を預けてスタート！</div>
+        </li>
+        <li>
+          <div class="place">🚲 レンタサイクルをGET</div>
+          <div class="desc">市街地に「まりんはうす ぐるくん」など店舗多数。電動アシスト付きが断然オススメ(坂と暑さ対策)</div>
+        </li>
+        <li>
+          <div class="place">🛍 ユーグレナモール & 730交差点</div>
+          <div class="desc">石垣の中心地をぶらり。公設市場・お土産通りをのぞいて、明日以降の買い物リサーチにも◎</div>
+        </li>
+        <li>
+          <div class="place">🏖 真栄里ビーチ</div>
+          <div class="desc">市街地から自転車で約15分。地元っ子御用達のローカルビーチでプチ海さんぽ</div>
+        </li>
+        <li>
+          <div class="place">🌳 バンナ公園 展望台(電動なら)</div>
+          <div class="desc">石垣島を360°見渡せる絶景スポット。坂が結構あるので電動アシスト推奨。夕陽の時間が最高</div>
+        </li>
+        <li>
+          <div class="place">🥩 夜は徒歩圏で石垣牛</div>
+          <div class="desc">市街地ホテルなら焼肉・島料理店もほぼ徒歩圏。自転車返却後にゆっくり乾杯🍻</div>
+        </li>
+      </ul>
+      <div class="reco-tip"><strong>tip</strong>5月の日中は紫外線&湿気MAX。早朝〜午前中と16時以降に動くのが快適！熱中症対策に水分こまめに</div>
+    </div>
+
+    <div class="timeline">
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">夜</div>
+          <div class="item-title">アートホテル石垣島 チェックイン 🛏</div>
+          <div class="item-detail">明日は朝早い！シュノーケリングに備えてゆっくり休もう</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day2">
+    <div class="day-header">
+      <div class="day-num">Day 2</div>
+      <div class="day-info">
+        <div class="day-date">5月5日(火)</div>
+        <div class="day-theme">ocean & island day</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">08:30</div>
+          <div class="item-title">石垣港 出発 ⛵️</div>
+          <div class="item-detail">離島ターミナル集合。早めに到着しておくと安心</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">09:00 – 10:40</div>
+          <div class="item-title">シュノーケリング 🐠</div>
+          <div class="item-detail">海の中の世界を満喫！</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">11:00 – 11:30</div>
+          <div class="item-title">幻の島(浜島)✨</div>
+          <div class="item-detail">潮が引いた時にだけ現れる白砂の島。写真スポット最強！</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">11:40 – 17:00</div>
+          <div class="item-title">竹富島 散策 🐃</div>
+          <div class="item-detail">水牛車、星砂の浜、コンドイビーチ、赤瓦の集落…のんびり島時間を</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">18:00</div>
+          <div class="item-title">活動終了 → 石垣市街へ 🏝</div>
+          <div class="item-detail">1日海と島で遊んだあとはお腹ペコペコのはず…！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- レコメンド：夜 -->
+    <div class="recommend recommend-night">
+      <div class="reco-badge">Night Time · 夜のおすすめ</div>
+      <div class="reco-title">島時間の夜は<br>サクッと美味しく🌙</div>
+      <ul class="reco-list">
+        <li>
+          <div class="place">🍣 海鮮 or 島料理ディナー</div>
+          <div class="desc">「ひとし石敢當店」のマグロ寿司は超有名(要予約)。「磯」「海羽」など地元食材が楽しめる店も◎</div>
+        </li>
+        <li>
+          <div class="place">🍻 ユーグレナモール周辺で軽く飲み</div>
+          <div class="desc">島のクラフトビールや泡盛バーをハシゴ。観光客向けじゃない地元の店も探検すると面白い</div>
+        </li>
+        <li>
+          <div class="place">🌟 730交差点〜港でナイト散歩</div>
+          <div class="desc">食後にゆるっと夜の港散歩。星空も意外ときれいに見える</div>
+        </li>
+      </ul>
+      <div class="reco-tip"><strong>tip</strong>1日中海＆島で疲れているはず。無理せずホテル早帰りもアリ◎ 明日のドルフィンに備えよう</div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day3">
+    <div class="day-header">
+      <div class="day-num">Day 3</div>
+      <div class="day-info">
+        <div class="day-date">5月6日(水)</div>
+        <div class="day-theme">dolphin & go home</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">朝</div>
+          <div class="item-title">朝食 → チェックアウト 🌅</div>
+          <div class="item-detail">荷物はホテルかドルフィンファンタジー周辺で預けておこう</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">09:30 – 12:00</div>
+          <div class="item-title">ドルフィンファンタジー石垣島 🐬</div>
+          <div class="item-detail">
+            <span class="tag">場所</span>南ぬ浜町。離島ターミナルから徒歩10分ほど
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- レコメンド：昼〜夕 -->
+    <div class="recommend recommend-sunset">
+      <div class="reco-badge">Last Day · 最終日のおすすめ</div>
+      <div class="reco-title">ラスト半日<br>食べて買って帰ろ🍦</div>
+      <ul class="reco-list">
+        <li>
+          <div class="place">🍜 八重山そばランチ</div>
+          <div class="desc">「明石食堂」(ちょい遠め)「あんぱる」「来夏世(くなつゆ)」など。ジューシー(炊き込みご飯)もぜひ</div>
+        </li>
+        <li>
+          <div class="place">🛍 ユーグレナモール お土産タイム</div>
+          <div class="desc">公設市場・お土産屋密集エリア。石垣の塩、ちんすこう、ラー油、泡盛などここで一気に揃う</div>
+        </li>
+        <li>
+          <div class="place">🍦 ミルミル本舗で〆ジェラート</div>
+          <div class="desc">石垣島ミルク使用の絶品ジェラート。空港店舗もあるので搭乗前ラストにも◎</div>
+        </li>
+        <li>
+          <div class="place">✈️ 16:00頃には空港へ</div>
+          <div class="desc">市街地から空港まで車で約30分。Peachは出発1時間前までに保安検査場通過がおすすめ</div>
+        </li>
+      </ul>
+      <div class="reco-tip"><strong>tip</strong>石垣空港にもお土産・飲食店あり。買い忘れたら最後の砦！</div>
+    </div>
+
+    <div class="timeline">
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">17:35</div>
+          <div class="item-title">石垣空港 出発 ✈️</div>
+          <div class="item-detail">
+            <span class="tag">Peach MM530</span>成田行き
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-card">
+          <div class="item-time">20:45</div>
+          <div class="item-title">成田空港 到着 🏠</div>
+          <div class="item-detail">Terminal 1 着。お疲れさまでした！</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 持ち物 -->
+  <section>
+    <h2 class="section-title"><span class="emoji">🎒</span>持ち物リスト</h2>
+    <div class="card">
+
+      <div class="pack-cat">
+        <div class="pack-cat-title">🪪 必須アイテム</div>
+        <ul class="pack-list">
+          <li class="essential">航空券(QR)</li>
+          <li class="essential">身分証</li>
+          <li class="essential">現金</li>
+          <li class="essential">クレカ</li>
+          <li class="essential">スマホ</li>
+          <li class="essential">充電器</li>
+          <li>モバイルバッテリー</li>
+          <li>イヤホン</li>
+        </ul>
+      </div>
+
+      <div class="pack-cat">
+        <div class="pack-cat-title">🌊 海アクティビティ</div>
+        <ul class="pack-list">
+          <li>水着</li>
+          <li>ラッシュガード</li>
+          <li>ビーチサンダル</li>
+          <li>大きめタオル</li>
+          <li>日焼け止め</li>
+          <li>防水バッグ</li>
+          <li>酔い止め薬</li>
+          <li>ゴーグル</li>
+          <li>水中カメラ</li>
+        </ul>
+      </div>
+
+      <div class="pack-cat">
+        <div class="pack-cat-title">👕 衣類・身支度</div>
+        <ul class="pack-list">
+          <li>Tシャツ×3</li>
+          <li>短パン×2</li>
+          <li>羽織りもの</li>
+          <li>下着・靴下</li>
+          <li>パジャマ</li>
+          <li>帽子</li>
+          <li>サングラス</li>
+          <li>歯ブラシ</li>
+          <li>洗顔・スキンケア</li>
+        </ul>
+      </div>
+
+      <div class="pack-cat">
+        <div class="pack-cat-title">💊 あると安心</div>
+        <ul class="pack-list">
+          <li>常備薬</li>
+          <li>絆創膏</li>
+          <li>虫除けスプレー</li>
+          <li>かゆみ止め</li>
+          <li>エコバッグ</li>
+          <li>ジップロック</li>
+          <li>ウェットティッシュ</li>
+          <li>折りたたみ傘</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 注意事項 -->
+  <section>
+    <h2 class="section-title"><span class="emoji">🌷</span>大事な注意事項</h2>
+    <div class="notice">
+      <div class="notice-item">
+        <div class="notice-icon">🔋</div>
+        <div><strong>Peach便はモバイルバッテリーNG！</strong><br>預け手荷物に入れられません。必ず機内持ち込み手荷物に入れること</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-icon">🧳</div>
+        <div><strong>Peachの預け手荷物は事前申込みがオトク</strong><br>ミニマム運賃の場合は別料金。出発1時間前まで申込可</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-icon">☀️</div>
+        <div><strong>5月の石垣はもう真夏級</strong><br>気温24〜28℃・紫外線MAX。日焼け止めはこまめに塗り直しを</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-icon">🌧</div>
+        <div><strong>梅雨入り直前のシーズン</strong><br>沖縄の梅雨入りは平年5月10日頃。にわか雨対策に折り畳み傘 or レインジャケットがあると安心</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-icon">🐢</div>
+        <div><strong>サンゴに優しい日焼け止めを</strong><br>オキシベンゾン・オクチノキサート不使用の「リーフセーフ」タイプがおすすめ</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer-msg">have a lovely<br><span class="em">trip!</span></div>
+    <div class="footer-sub">— 楽しい旅になりますように —</div>
+    <div class="footer-deco">🌿 ✦ 🐚 ✦ 🌊</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
